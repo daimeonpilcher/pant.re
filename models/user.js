@@ -30,6 +30,10 @@ var userSchema	= new mongoose.Schema({ // creates the new Schema
 		type: Number,
 		default: ""
 	},
+	profileImage: {						// Set path to user profile page
+		type: String,
+		default: ""
+	},
 	// dietaryRestrictions: {			// To be used later
 	// }
 })

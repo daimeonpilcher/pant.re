@@ -17,7 +17,26 @@ app.get("/", function (req, res) {
 	res.send(homePath);
 })
 
-//temp test path to send users to browser window
+// get path to users
+
+// get path to recipes
+
+// get path to ingredients
+
+// post to users
+
+// post to recipes
+
+// post to ingredients
+
+// get path to login page
+
+// post path to login page
+	// after login redirect user to profile page
+
+// get path to profile page
+
+// post to profile page (users)
 
 
 
