@@ -5,8 +5,19 @@ var express 	= require("express"),			// Require Express to manage website
 
 var app = express();								// Start Express function
 
+var views = path.join(process.cwd(), "views")
 
-// test for automator 1
+app.use(express.static('public'));
+
+//set root route
+app.get("/", function (req, res) {
+	var homePath = path.join(views, "home.html");
+	res.send(homePath);
+})
+
+//temp test path to send users to browser window
+
+
 
 app.listen(3000, function () {					// Starts the Node.JS Server on Port 3000
 	console.log("Successfully Started!");
