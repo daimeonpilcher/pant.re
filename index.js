@@ -14,7 +14,7 @@ var views = path.join(process.cwd(), "views")
 //set root route
 app.get("/", function (req, res) {
 	var homePath = path.join(views, "home.html");
-	res.send(homePath);
+	res.sendFile(homePath);
 })
 
 // get path to users
