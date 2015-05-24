@@ -1,13 +1,15 @@
 var express 	= require("express"),			// Require Express to manage website
-//	bodyParser 	= require("body-parser"),		// Require Body-Parser to be able to read form data
-	path 		= require("path");				// Require Path for applications
-//	session		= require("express-session");	// Require Express Sessions for Session Cookies
+	bodyParser 	= require("body-parser"),		// Require Body-Parser to be able to read form data
+	path 		= require("path"),				// Require Path for applications
+	session		= require("express-session"),	// Require Express Sessions for Session Cookies
+	db			= require("./models");
 
-var app = express();								// Start Express function
-
-var views = path.join(process.cwd(), "views")
+var app = express();							// Start Express function
 
 app.use(express.static('public'));
+app.use(bodyParser.urlencoded({extended: true }));
+
+var views = path.join(process.cwd(), "views")
 
 //set root route
 app.get("/", function (req, res) {
