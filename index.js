@@ -24,6 +24,17 @@ app.get("/", function (req, res) {
 // get path to ingredients
 
 // post to users
+app.post("/users", function (req, res) {
+	var newUser = req.body.user;
+	db.User.createSecure(newUser, function (err, user){
+		if (user) {
+			//req.login(user);
+			console.log(user);
+		} else {
+			res.redirect("/signup");
+		}
+	});
+});
 
 // post to recipes
 
