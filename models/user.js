@@ -2,6 +2,14 @@ var mongoose 	= require("mongoose");	// require mongoose ORM
 var bcrypt		= require("bcrypt");	// require bcrypt for password encryption before saving to database
 //######################Begin Schema#######################################
 var userSchema	= new mongoose.Schema({ // creates the new Schema
+	firstName: {						// Creates field for First Name
+		type: String,
+		default: ""						// Sets default value to "" to ensure db structure
+	},
+	lastName: {							// Creates field for the Last name
+		type: String,
+		default: ""
+	},	
 	email: {							// This is the email field
 		type: String,					// Sets the value to a string type
 		lowercase: true,				// ensures data is saved in lowercase format
@@ -13,14 +21,6 @@ var userSchema	= new mongoose.Schema({ // creates the new Schema
 	passwordDigest: {					// User's password is saved into this field
 		type: String,					// after it has been hashed and encrypted
 		required: true					// Requires the user to have a password
-	},
-	firstName: {						// Creates field for First Name
-		type: String,
-		default: ""						// Sets default value to "" to ensure db structure
-	},
-	lastName: {							// Creates field for the Last name
-		type: String,
-		default: ""
 	},
 	age: {								// Creates field for age (used to track the users age and weight goals(Future feature))
 		type: Number,					// Sets value type to Number
@@ -54,11 +54,18 @@ userSchema.statics.createSecure = function (params, cb) {
 
   var that = this;
 
-  bcrypt.hash(params.password, 12, function (err, hash) {
-    params.passwordDigest = hash;
-    that.create(params, cb);
-  });
-
+  // generate the salt
+  bcrypt.genSalt(function (err, salt) {
+    bcrypt.hash(params.password, salt, function (err, hash) {
+      console.log(hash);
+      that.create({
+        firstName: params.firstName,
+        lastName: params.lastName,
+        email: params.email,
+        passwordDigest: hash
+       }, cb)
+    });
+  })
 };
 
 userSchema.statics.authenticate = function (params, cb) {
@@ -66,6 +73,7 @@ userSchema.statics.authenticate = function (params, cb) {
       email: params.email
     },
     function (err, user) {
+      console.log("Checking Password for")
       user.checkPswrd(params.password);
     });
 };
@@ -75,8 +83,10 @@ userSchema.methods.checkPswrd = function(password, cb) {
   bcrypt.compare(password, 
   this.passwordDigest, function (err, isMatch) {
     if (isMatch) {
+      console.log("passwords match")
       cb(null, user);
     } else {
+      console.log("passwords don't match")
       cb("OOPS", null);
     }
   });
