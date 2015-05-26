@@ -17,6 +17,9 @@ app.use(session({
 }))
 
 var views = path.join(process.cwd(), "views")
+app.use(express.static('public'));
+app.use(express.static('bower_components'));
+app.use(express.static('node_modules'))
 
 app.use("/", function (req, res, next) {
 	//logs in a user by saving their user ID
@@ -70,8 +73,7 @@ app.post("/users", function (req, res) {
 		if (user) {
 			console.log(user);
 			req.login(user);
-			
-			res.redirect("/profile")
+			res.redirect("/profile/:userId")
 		} else {
 			res.redirect("/join");
 		}
@@ -92,6 +94,7 @@ app.get("/users", function (req, res) {
 // get path to login page
 app.get("/login", function (req, res) {
 	var loginPath = path.join(views, "login.html");
+	console.log("Login Path")
 	res.sendFile(loginPath);
 })
 
@@ -102,7 +105,7 @@ app.post("/login", function (req, res) {
 			req.login(user);
 			res.redirect("/profile")
 		} else {
-			res.send(user + ", please try again")
+			res.send("Please try again")
 		}
 	})
 })
@@ -111,8 +114,16 @@ app.post("/login", function (req, res) {
 // get path to profile page
 app.get("/profile", function (req, res){
 	var profilePath = path.join(views, "profile.html");
-	console.log("Successfully loaded user " + user.firstName + "'s profile!")
+	console.log("Routed to Profile" + user)
 	res.sendFile(profilePath);
+})
+
+// get user's profile information
+app.get("/profile/:userId", function (req, res) {
+	var cur = req.body.currentUser;
+	var profilePath = path.join(views, "profile.html")
+	console.log("Routed to user's profile")
+	res.send(cur, profilePath)
 })
 // post to profile page (users)
 

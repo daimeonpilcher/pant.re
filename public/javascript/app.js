@@ -1,9 +1,8 @@
 // wait for the window to load
 $(function() {
-	var $newUser 	= $("#signup");
-	
-	// submit newUser data
-	$.newUser.on("submit", function (click) {
-		
+	$profile
+
+	$.get("/users").done(function (cur) {
+		_cur (function (user))
 	})
 })
