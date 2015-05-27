@@ -19,7 +19,7 @@ app.use(session({
 var views = path.join(process.cwd(), "views")
 app.use(express.static('public'));
 app.use(express.static('bower_components'));
-app.use(express.static('node_modules'))
+
 
 app.use("/", function (req, res, next) {
 	//logs in a user by saving their user ID
@@ -51,7 +51,7 @@ app.use("/", function (req, res, next) {
 
 //set root route
 app.get("/", function (req, res) {
-	var homePath = path.join(views, "home.html");
+	var homePath = path.join(views, "index.html");
 	console.log("Successfully Loaded Home Page (Get '/')");
 	res.sendFile(homePath);
 })
@@ -73,7 +73,7 @@ app.post("/users", function (req, res) {
 		if (user) {
 			console.log(user);
 			req.login(user);
-			res.redirect("/profile/:userId")
+			res.redirect("/profile")
 		} else {
 			res.redirect("/join");
 		}
@@ -89,7 +89,7 @@ app.get("/users", function (req, res) {
 
 // post to recipes
 
-// post to ingredients
+// post to ingredients  
 
 // get path to login page
 app.get("/login", function (req, res) {
@@ -100,6 +100,7 @@ app.get("/login", function (req, res) {
 
 // post path to login page
 app.post("/login", function (req, res) {
+	var user = req.body.user;
 	db.User.authenticate (user, function (err, user) {
 		if (!err) { 			// after login redirect user to profile page
 			req.login(user);
@@ -114,17 +115,24 @@ app.post("/login", function (req, res) {
 // get path to profile page
 app.get("/profile", function (req, res){
 	var profilePath = path.join(views, "profile.html");
-	console.log("Routed to Profile" + user)
 	res.sendFile(profilePath);
 })
 
 // get user's profile information
-app.get("/profile/:userId", function (req, res) {
-	var cur = req.body.currentUser;
-	var profilePath = path.join(views, "profile.html")
-	console.log("Routed to user's profile")
-	res.send(cur, profilePath)
-})
+app.get("/api/user", function (req, res) {
+	db.User.
+	findOne({
+		_id: req.session.userId
+	}).
+	select("-passwordDigest")
+	.exec(function (err, user) {
+		if (!err) {
+			res.send(user);
+		} else {
+			res.send(404);
+		}
+	})
+});
 // post to profile page (users)
 
 

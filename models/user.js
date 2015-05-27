@@ -74,7 +74,7 @@ userSchema.statics.authenticate = function (params, cb) {
     },
     function (err, user) {
       console.log("Checking Password for")
-      user.checkPswrd(params.password);
+      user.checkPswrd(params.password, cb);
     });
 };
 

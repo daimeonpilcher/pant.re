@@ -1,8 +1,13 @@
 // wait for the window to load
 $(function() {
-	$profile
+	var $greeting = $("#greeting");
 
-	$.get("/users").done(function (cur) {
-		_cur (function (user))
-	})
+	// get data for profile
+	$.get("/api/user", function (data) {
+		$user = data;
+
+
+	});
+
+
 })
