@@ -1,0 +1,15 @@
+#header h1 {
+	text-shadow: 2px 2px 10px black;
+}
+body {
+	background: url(../images/pantry-clean.jpg);
+	font-family: helvetica-neue;
+	font-variant: thin;
+}
+.profile {
+	color: black;
+	font-family: helvetica;
+	font-variant: thin;
+	background: gray;
+	opacity: .5;
+}

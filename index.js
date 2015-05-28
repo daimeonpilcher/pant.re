@@ -2,7 +2,9 @@ var express 	= require("express"),			// Require Express to manage website
 	bodyParser 	= require("body-parser"),		// Require Body-Parser to be able to read form data
 	path 		= require("path"),				// Require Path for applications
 	session		= require("express-session"),	// Require Express Sessions for Session Cookies
-	db			= require("./models");
+	db			= require("./models"),
+	morgan		= require("morgan"),
+	flash		= require("flash");
 
 var app = express();							// Start Express function
 
@@ -15,6 +17,9 @@ app.use(session({
 	resave: false,
 	saveUninitialized: true
 }))
+// use express flash messages
+app.use(flash());
+app.use(morgan('dev'));
 
 var views = path.join(process.cwd(), "views")
 app.use(express.static('public'));
