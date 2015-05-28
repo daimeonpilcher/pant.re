@@ -1,6 +1,6 @@
 {
     "scripts": {
-    "start": "npm install && bower install && node index.js"
+    "start": "npm install && bower install && nodemon index.js"
    }
     "dependencies": {
     "bcrypt": "^0.8.3",
