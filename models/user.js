@@ -34,9 +34,27 @@ var userSchema	= new mongoose.Schema({ // creates the new Schema
 		type: String,
 		default: ""
 	},
+  // userIngredients: [{       // Creates Ingredients Field belonging to user
+  //   _ingredient: {
+  //     type: Schema.Types.ObjectID,
+  //     ref: "Ingredient"
+  //   },
+  //   qty: {
+  //     type: Number,
+  //     default: 0
+  //   },
+  //   expDate: {
+  //     type: Date,
+  //     default: ""
+  //   }
+  // }],
+  // userRecipes: [{
+  //   type: Schema.Types.ObjectID,
+  //   ref: 'Recipe'
+  // }]
 	// dietaryRestrictions: {			// To be used later
 	// }
-})
+});
 //#####################END SCHEMA##########################################################
 
 var confirm = function (password, password_con) {

@@ -68,6 +68,11 @@ app.get("/join", function (req, res) {
 })
 // get path to recipes
 
+// path to photos
+app.get("/photos", function (req, res) {
+	res.send()
+})
+
 
 // get path to ingredients
 
@@ -141,7 +146,7 @@ app.get("/api/user", function (req, res) {
 // post to profile page (users)
 
 
-
-app.listen(3000, function () {					// Starts the Node.JS Server on Port 3000
-	console.log("Successfully Started!");
-})
+app.listen(process.env.PORT || 3000)
+// app.listen(3000, function () {					// Starts the Node.JS Server on Port 3000
+// 	console.log("Successfully Started!");
+// })
