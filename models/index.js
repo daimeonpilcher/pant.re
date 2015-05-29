@@ -6,6 +6,6 @@ mongoose.connect( process.env.MONGOLAB_URI ||
                "mongodb://localhost/pantre");
 
 module.exports.User = require("./user");
-// module.exports.Ingredient = require("./ingredient");
-// module.exports.Recipe = require("./recipe");
-// module.exports.Category = require("./category");
+module.exports.Ingredient = require("./ingredients");
+module.exports.Recipe = require("./recipes");
+module.exports.Category = require("./categories");

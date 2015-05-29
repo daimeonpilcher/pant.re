@@ -1,7 +1,8 @@
 var mongoose 	= require("mongoose");	// require mongoose ORM
 var bcrypt		= require("bcrypt");	// require bcrypt for password encryption before saving to database
+var Schema    = mongoose.Schema;
 //######################Begin Schema#######################################
-var userSchema	= new mongoose.Schema({ // creates the new Schema
+var userSchema	= new Schema({ // creates the new Schema
 	firstName: {						// Creates field for First Name
 		type: String,
 		default: ""						// Sets default value to "" to ensure db structure
@@ -34,24 +35,24 @@ var userSchema	= new mongoose.Schema({ // creates the new Schema
 		type: String,
 		default: ""
 	},
-  // userIngredients: [{       // Creates Ingredients Field belonging to user
-  //   _ingredient: {
-  //     type: Schema.Types.ObjectID,
-  //     ref: "Ingredient"
-  //   },
-  //   qty: {
-  //     type: Number,
-  //     default: 0
-  //   },
-  //   expDate: {
-  //     type: Date,
-  //     default: ""
-  //   }
-  // }],
-  // userRecipes: [{
-  //   type: Schema.Types.ObjectID,
-  //   ref: 'Recipe'
-  // }]
+  userIngredients: [{       // Creates Ingredients Field belonging to user
+    _ingredient: {
+      type: Schema.Types.ObjectId,
+      ref: "Ingredient"
+    },
+    qty: {
+      type: Number,
+      default: 0
+    },
+    expDate: {
+      type: Date,
+      default: ""
+    }
+  }],
+  userRecipes: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Recipe'
+  }]
 	// dietaryRestrictions: {			// To be used later
 	// }
 });
