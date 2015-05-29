@@ -46,7 +46,7 @@
             </div>
             <div class="wrapper"></div>
             <div class="container profile">
-                <h1 class="col-md-12 text-center">Welcome to pant.rē, Daimeon!</h1>
+                <h1 class="col-md-12 text-center">Welcome to pant.rē, <span id="profile-name"></span></h1>
                 <div class="jumbotron large">
                     <p class="text-center">Use the panels below to add ingredients and check out what items recipes
                         you can make!</p>
@@ -441,10 +441,7 @@
                                         </tr>
                                     </tbody>
                                     <!-- ----------End of the Accordion----------- -->
-                                    <script type="text/template" id="profileTemplate">
-                                        <img src="<%=profileImage%>" class="some bootstrap rule"><h1>Welcome to Pant.re, <%=firstName %> <%=lastName %>
-                                                	<p>Email: <%= email>
-                                    </script>
+                                    
                                 </table>
                             </div>
                         </div>
