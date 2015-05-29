@@ -4,8 +4,9 @@ $(function() {
 	// get data for profile
 	$.get("/api/user", function (data) {
 		$user = data;
+		$("#profile-name").append($user.firstName);
 	});
 
-	$("#profile-name").append($user.firstName);
+
 
 })
