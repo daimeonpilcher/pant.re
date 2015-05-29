@@ -75,6 +75,9 @@ app.get("/photos", function (req, res) {
 
 
 // get path to ingredients
+app.get("/ingredients", function (req, res) {
+	res.send()
+})
 
 // post to users
 app.post("/users", function (req, res) {

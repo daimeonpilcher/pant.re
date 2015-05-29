@@ -8,4 +8,3 @@ mongoose.connect( process.env.MONGOLAB_URI ||
 module.exports.User = require("./user");
 module.exports.Ingredient = require("./ingredients");
 module.exports.Recipe = require("./recipes");
-module.exports.Category = require("./categories");
