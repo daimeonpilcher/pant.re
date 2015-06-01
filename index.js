@@ -8,7 +8,7 @@ var express 	= require("express"),			// Require Express to manage website
 
 var app = express();							// Start Express function
 
-app.use(express.static('public'));
+
 app.use(bodyParser.urlencoded({extended: true }));
 
 // use sessions
@@ -67,6 +67,9 @@ app.get("/join", function (req, res) {
 	res.sendFile(joinPath);
 })
 // get path to recipes
+app.get("/recipes", function (req, res) {
+	res.send()
+})
 
 // path to photos
 app.get("/photos", function (req, res) {
@@ -76,7 +79,8 @@ app.get("/photos", function (req, res) {
 
 // get path to ingredients
 app.get("/ingredients", function (req, res) {
-	res.send()
+	console.log(ingredient)
+	res.send(ingredient)
 })
 
 // post to users
