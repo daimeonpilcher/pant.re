@@ -1,10 +1,45 @@
 // wait for the window to load
 $(function() {
 
-	// get data for profile
+
+	// Steps toward adding user data
+
+	// 1. Fetch current user data from
+	//		backend
+
+	// 2. Grab template from the page
+	
+	// 3. Pass user data into the 
+	//		template
+
+	// 4. Use jQuery to append the 
+	//		rendered template with 
+	// 		the user data
+
+	alert("working")
+	// 1. get data for profile
 	$.get("/api/user", function (data) {
 		$user = data;
-		$("#profile-name").append($user.firstName);
+		
+		// this grabs the script tag
+		var $userTemp = $("#userTemp");
+		// this turns it into a templating function
+		var userTemplate  = _.template($userTemp.html());
+
+		var rndrUser = userTemplate(data);
+
+		$("body").append($(rndrUser));
+		alert("working")
+
+		var $ingTemp = $("#ingTemp");
+		// this turns it into a templating function
+		var ingTemplate  = _.template($ingTemp.html());
+
+		var rndrIng = ingTemplate(data);
+
+
+		$("body").append(rndrIng);
+
 	});
 
 

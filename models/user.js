@@ -1,3 +1,4 @@
+var async = require("async");
 var mongoose 	= require("mongoose");	// require mongoose ORM
 var bcrypt		= require("bcrypt");	// require bcrypt for password encryption before saving to database
 var Schema    = mongoose.Schema;

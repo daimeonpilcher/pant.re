@@ -138,19 +138,22 @@ app.get("/profile", function (req, res){
 // get user's profile information
 app.get("/api/user", function (req, res) {
 	db.User.
-	findOne({
-		_id: req.session.userId
-	}).
-	select("-passwordDigest")
-	.exec(function (err, user) {
-		if (!err) {
-			res.send(user);
-		} else {
-			res.send(404);
-		}
+	findOne({_id: req.session.userId})
+		.populate("userIngredients._ingredient")
+		.select("-passwordDigest")
+			.exec(function (err, user) {
+				if (!err) {
+					res.send(user);
+				} else {
+					res.send(404);
+				}
 	})
 });
 // post to profile page (users)
+// app.put("/api/user", function (req, res) {
+// 	var user = req.body.user;
+// 	db.User.findOne({id: req.session.userId})
+// }
 
 
 app.listen(process.env.PORT || 3000)

@@ -16,7 +16,7 @@
         <script type="text/javascript" src="./jquery/dist/jquery.js"></script>
         <script type="text/javascript" src="./bootstrap/dist/js/bootstrap.js"></script>
         <script type="text/javascript" src="./underscore/underscore.js"></script>
-        <script type="text/javascript" src="../javascript/app.js"></script>
+        <script type="text/javascript" src="/javascript/app.js"></script>
     </head>
     
     <body>
@@ -433,7 +433,7 @@
                                         </tr>
                                         <tr>
                                             <td colspan="12" class="hiddenRow">
-                                                <div class="accordian-body collapse" id="edit0powdered">
+                                                <div class="accordian-body collapse" id="edit0 powdered">
                                                     <!-- Template Begin-->
                                                     <!-- Template Begin-->
                                                 </div>
@@ -478,5 +478,35 @@
             </div>
         </div>
     </body>
+
+<script type="text/template" id="RecipeResultsTemplate">
+    <li class="media">
+        <a class="pull-left" href="http://blogchef.net/tuna-salad-sandwich-recipe/"><img class="media-object" src="../images/tuna-sandwich.jpg" height="64" width="64"></a>
+            <div class="media-body">
+            <h4 class="media-heading">Gourmet Tuna Sandwich</h4>
+            <p>Tuna salad sandwiches are pretty basic and often disappointing… but this one is different. Not only does it consist of ingredients from a tuna salad but from a Waldorf salad as well. A quick glance at the ingredient list will tell the story if this sandwich is right for you. The crunch from the apple and celery add a nice touch to this sandwich, and the Swiss cheese tops it off nicely. There is a bit of prep work required but it is worth it. This recipe is perfect for summer and it can be prepared in advance for picnics. Enjoy.</p>
+        </div>
+    </li>
+</script>
+
+
+<script type="text/template" id="userTemp">
+    <form>
+        <input type="text" name="user[email]" value="<%= email %>">
+        <input type="number" name="user[age]" value="<%= age >">
+        <input type="number" name="user[weight]" value="<% weight >">
+    </form>
+</script>
+
+<!--Ingredient Template -->
+
+<script type="text/template" id="ingTemp">
+
+    <% userIngredients.forEach(function (ingredObj) { %> 
+       IS canned: <%= ingredObj._ingredient.canned %>
+    <% }) %>
+    
+</script>
+
 
 </html>
