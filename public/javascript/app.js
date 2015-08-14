@@ -8,19 +8,20 @@ $(function() {
 	//		backend
 
 	// 2. Grab template from the page
-	
-	// 3. Pass user data into the 
+
+	// 3. Pass user data into the
 	//		template
 
-	// 4. Use jQuery to append the 
-	//		rendered template with 
+	// 4. Use jQuery to append the
+	//		rendered template with
 	// 		the user data
 
-	alert("working")
+	alert("working");
 	// 1. get data for profile
 	$.get("/api/user", function (data) {
 		$user = data;
-		
+		console.log("hello I'm here!");
+		$("#profile-name").html($user.firstName);
 		// this grabs the script tag
 		var $userTemp = $("#userTemp");
 		// this turns it into a templating function

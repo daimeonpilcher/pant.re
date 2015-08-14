@@ -51,7 +51,7 @@ app.use("/", function (req, res, next) {
     req.user = null;
   }
 
-  next(); 
+  next();
 });
 
 //set root route
@@ -106,7 +106,7 @@ app.get("/users", function (req, res) {
 
 // post to recipes
 
-// post to ingredients  
+// post to ingredients
 
 // get path to login page
 app.get("/login", function (req, res) {
@@ -127,7 +127,7 @@ app.post("/login", function (req, res) {
 		}
 	})
 })
-	
+
 
 // get path to profile page
 app.get("/profile", function (req, res){

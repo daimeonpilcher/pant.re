@@ -11,7 +11,7 @@ var userSchema	= new Schema({ // creates the new Schema
 	lastName: {							// Creates field for the Last name
 		type: String,
 		default: ""
-	},	
+	},
 	email: {							// This is the email field
 		type: String,					// Sets the value to a string type
 		lowercase: true,				// ensures data is saved in lowercase format
@@ -100,7 +100,7 @@ userSchema.statics.authenticate = function (params, cb) {
 
 userSchema.methods.checkPswrd = function(password, cb) {
   var user = this;
-  bcrypt.compare(password, 
+  bcrypt.compare(password,
   this.passwordDigest, function (err, isMatch) {
     if (isMatch) {
       console.log("passwords match")

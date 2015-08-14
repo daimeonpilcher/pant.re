@@ -2,7 +2,7 @@
 var mongoose = require("mongoose");
 //mongoose.connect("mongodb://localhost/pantre");
 mongoose.connect( process.env.MONGOLAB_URI ||
-               process.env.MONGOHQ_URL || 
+               process.env.MONGOHQ_URL ||
                "mongodb://localhost/pantre");
 
 module.exports.User = require("./user");
