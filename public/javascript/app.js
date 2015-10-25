@@ -16,16 +16,16 @@ $(function() {
 	//		rendered template with
 	// 		the user data
 
-	alert("working");
+	// alert("working");
 	// 1. get data for profile
 	$.get("/api/user", function (data) {
 		$user = data;
-		console.log("hello I'm here!");
-		$("#profile-name").html($user.firstName);
+		//console.log("hello I'm here!");
+		//$("#profile-name").html($user.firstName);
 		// this grabs the script tag
 		var $userTemp = $("#userTemp");
 		// this turns it into a templating function
-		var userTemplate  = _.template($userTemp.html());
+		kvar userTemplate  = _.template($userTemp.html());
 
 		var rndrUser = userTemplate(data);
 
